@@ -53,6 +53,9 @@ class Variable(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     konstanta = Column(Float)
 
     web_id = Column(String(255), nullable=True, comment="PI Web ID")
+    
+    formula = Column(String(255), nullable=True, comment="Formula name for calculation")
+    
     created_by = Column(UUID(as_uuid=True), nullable=False)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
 
