@@ -7,6 +7,8 @@ from .efficiency_trasanction_detail_root_causes import EfficiencyDataDetailRootC
 from .variable_causes import VariableCause
 from .variable_headers import VariableHeader
 from .thermoflow_statuses import ThermoflowStatus
+from .efficiency_trasanction_detail_root_cause_actions import EfficiencyDataDetailRootCauseAction
+from .variable_cause_actions import VariableCauseAction
 
 
 __all__={

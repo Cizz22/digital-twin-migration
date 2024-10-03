@@ -20,28 +20,21 @@ from digital_twin_migration.security.access_control import (
 )
 
 
-class VariableCause(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
-    """The Variable Causes model"""
+class VariableCauseAction(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
+    """The Variable Cause Actions model"""
 
-    __tablename__ = "hl_ms_excel_variables_cause"
+    __tablename__ = "hl_ms_excel_variables_cause_actions"
 
     # ? Column Defaults
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    parent_id = Column(UUID(as_uuid=True), ForeignKey('hl_ms_excel_variables_cause.id'),
-                       nullable=True, comment='ref to id table ini sendiri (recursive)')
-    variable_id = Column(UUID(as_uuid=True), ForeignKey(
-        'hl_ms_excel_variables.id', ondelete="CASCADE"), nullable=False)
+    cause_id = Column(UUID(as_uuid=True), ForeignKey(
+        'hl_ms_excel_variables_cause.id', ondelete="CASCADE"), nullable=False)
     name = Column(String(255), nullable=True)
     created_by = Column(String(100), nullable=True)
     updated_by = Column(String(100), nullable=True)
 
-    parent = relationship("VariableCause", remote_side=[id], backref="children")
-
-    root_causes = relationship(
-        "EfficiencyDataDetailRootCause", back_populates="variable_cause", lazy="selectin")
-
-    variable = relationship("Variable", back_populates="causes", lazy="joined")
+    cause = relationship("VariableCause", back_populates="actions", lazy="joined")
     
-    actions = relationship("VariableCauseAction", back_populates="cause", lazy="selectin")
+    root_cause_actions = relationship("EfficiencyDataDetailRootCauseAction", back_populates="action", lazy="selectin")
 
     __mapper_args__ = {"eager_defaults": True}

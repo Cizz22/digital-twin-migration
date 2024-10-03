@@ -32,12 +32,11 @@ class EfficiencyDataDetailRootCause(db.Model, BaseModel, TimestampMixin, metacla
     cause_id = Column(UUID(as_uuid=True), ForeignKey('hl_ms_excel_variables_cause.id',
                       ondelete="CASCADE"), nullable=True, comment='Ref to hl_m_cause 1 to many')
     is_repair = Column(Boolean, default=False, comment='1=ya, 0=tidak')
+    is_checked = Column(Boolean, default=False, comment='1=ya, 0=tidak')
     biaya = Column(Float, nullable=True,
                    comment='Besar Biaya yang dikeluarkan (input)')
     created_by = Column(UUID(as_uuid=True), nullable=True)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
-    variable_header_value = Column(
-        JSON, nullable=True, comment='[{id: 9, nama: \'sdasdas asdasd\', val: 1}]')
 
     __mapper_args__ = {"eager_defaults": True}
 
@@ -45,3 +44,5 @@ class EfficiencyDataDetailRootCause(db.Model, BaseModel, TimestampMixin, metacla
         "VariableCause", back_populates="root_causes", lazy="joined")
     efficiency_transaction_detail = relationship(
         "EfficiencyDataDetail", back_populates="root_causes", lazy="joined")
+    
+    actions = relationship("EfficiencyDataDetailRootCauseAction", back_populates="root_cause", lazy="selectin")
