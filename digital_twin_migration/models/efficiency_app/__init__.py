@@ -9,7 +9,7 @@ from .variable_headers import VariableHeader
 from .thermoflow_statuses import ThermoflowStatus
 from .efficiency_trasanction_detail_root_cause_actions import EfficiencyDataDetailRootCauseAction
 from .variable_cause_actions import VariableCauseAction
-
+from .efficiency_transaction_detail_root_cause_members import EfficiencyDataDetailRootCauseMember
 
 __all__={
     'Case',
