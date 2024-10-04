@@ -27,7 +27,7 @@ class EfficiencyDataDetailRootCauseMember(db.Model, BaseModel, TimestampMixin, m
 
     # ? Column Defaults
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
-    root_cause_id = Column(UUID(as_uuid=True), ForeignKey('hl_ms_excel_variables_cause.id',
+    root_cause_id = Column(UUID(as_uuid=True), ForeignKey('hl_tr_data_detail_root_cause.id',
                       ondelete="CASCADE"), nullable=True, comment='Ref to hl_m_cause 1 to many')
     cause_id = Column(UUID(as_uuid=True), ForeignKey('hl_ms_excel_variables_cause.id',
                       ondelete="CASCADE"), nullable=True, comment='Ref to hl_m_cause 1 to many')
