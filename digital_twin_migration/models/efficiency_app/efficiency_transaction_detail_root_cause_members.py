@@ -33,6 +33,7 @@ class EfficiencyDataDetailRootCauseMember(db.Model, BaseModel, TimestampMixin, m
                       ondelete="CASCADE"), nullable=True, comment='Ref to hl_m_cause 1 to many')
     is_parent = Column(Boolean, default=False, comment='1=ya, 0=tidak')
     is_checked = Column(Boolean, default=False, comment='1=ya, 0=tidak')
+    is_repair = Column(Boolean, default=False, comment='1=ya, 0=tidak')
     biaya = Column(Float, nullable=True,
                    comment='Besar Biaya yang dikeluarkan (input)')
     created_by = Column(UUID(as_uuid=True), nullable=True)
