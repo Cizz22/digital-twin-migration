@@ -28,6 +28,7 @@ class PFIEquipment(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
         UUID(as_uuid=True), db.ForeignKey("dl_ms_category.id", ondelete="CASCADE"), nullable=True
     )
 
+    name = db.Column(db.String(255), nullable=False, comment="Equipment Name")
     system_tag = db.Column(db.String(255), nullable=True, comment="System Tag")
     assetnum = db.Column(db.String(255), nullable=True, comment="Asset Number")
     location_tag = db.Column(db.String(255), nullable=True, comment="Location Tag")
