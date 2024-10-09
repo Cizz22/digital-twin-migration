@@ -1,12 +1,8 @@
 from .equipments import PFIEquipment
-from .category import PFICategory
-from .tag import PFIMasterTag
-from .value_tag import PFIValueTag
+from .equipment_tree import PFIEquipmentTree
 
 
 __all__ = {
     "PFIEquipment",
-    "PFICategory",
-    "PFIMasterTag",
-    "PFIValueTag",
+    "PFIEquipmentTree",
 }
