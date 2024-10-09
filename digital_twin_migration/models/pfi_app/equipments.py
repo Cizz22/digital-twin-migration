@@ -17,11 +17,15 @@ class PFIEquipment(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
         nullable=True,
         comment="ref to id table ini sendiri (recursive)",
     )
+
     equipment_tree_id = db.Column(
         UUID(as_uuid=True),
         db.ForeignKey("equipment_tree.id", ondelete="CASCADE"),
         nullable=True,
-        comment="ref to id table ini sendiri (recursive)",
+    )
+
+    category_id = db.Column(
+        UUID(as_uuid=True), db.ForeignKey("dl_ms_category.id", ondelete="CASCADE"), nullable=True
     )
 
     system_tag = db.Column(db.String(255), nullable=True, comment="System Tag")
@@ -30,6 +34,10 @@ class PFIEquipment(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
 
     parent = relationship("PFIEquipment", remote_side=[id], backref="children")
     equipment_tree = relationship("PFIEquipmentTree", back_populates="equipments", lazy="joined")
+    category = relationship("PFICategory", back_populates="equipments", lazy="joined")
+
+    features_data = relationship("PFIFeaturesData", back_populates="equipment", lazy="selectin")
+    predicts = relationship("PFIPredict", back_populates="equipment", lazy="selectin")
     pof_predicts = relationship("RMPofPredict", back_populates="equipment", lazy="selectIn")
 
     __mapper_args__ = {"eager_defaults": True}
