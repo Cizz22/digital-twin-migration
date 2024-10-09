@@ -8,19 +8,19 @@ from digital_twin_migration.models.abc import BaseModel, MetaBaseModel
 
 
 class PFIEquipment(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
-    __tablename__ = "equipment_master"
+    __tablename__ = "ms_equipment_master"
 
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     parent_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("equipment_master.id", ondelete="CASCADE"),
+        db.ForeignKey("ms_equipment_master.id", ondelete="CASCADE"),
         nullable=True,
         comment="ref to id table ini sendiri (recursive)",
     )
 
     equipment_tree_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("equipment_tree.id", ondelete="CASCADE"),
+        db.ForeignKey("ms_equipment_tree.id", ondelete="CASCADE"),
         nullable=True,
     )
 
@@ -38,6 +38,6 @@ class PFIEquipment(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
 
     features_data = relationship("PFIFeaturesData", back_populates="equipment", lazy="selectin")
     predicts = relationship("PFIPredict", back_populates="equipment", lazy="selectin")
-    pof_predicts = relationship("RMPofPredict", back_populates="equipment", lazy="selectIn")
+    pof_predicts = relationship("RMPofPredict", back_populates="equipment", lazy="selectin")
 
     __mapper_args__ = {"eager_defaults": True}

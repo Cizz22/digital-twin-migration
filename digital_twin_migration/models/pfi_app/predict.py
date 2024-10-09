@@ -13,7 +13,7 @@ class PFIPredict(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     equipment_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("equipment_master.id", ondelete="CASCADE"),
+        db.ForeignKey("ms_equipment_master.id", ondelete="CASCADE"),
         nullable=True,
         comment="ref to id table ini sendiri (recursive)",
     )

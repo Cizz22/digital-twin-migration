@@ -16,7 +16,7 @@ class RMPofPredict(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
     value = db.Column(db.Double, nullable=True, comment="pof predict value")
     eq_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("equipment_master.id", ondelete="CASCADE"),
+        db.ForeignKey("ms_equipment_master.id", ondelete="CASCADE"),
         nullable=True,
         comment="",
     )
@@ -28,6 +28,8 @@ class RMPofPredict(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
     )
 
     equipment = relationship("PFIEquipment", back_populates="pof_predicts", lazy="joined")
-    risk_classification = relationship("RMRiskClassification", back_populates="pof_predicts", lazy="joined")
+    risk_classification = relationship(
+        "RMRiskClassification", back_populates="pof_predicts", lazy="joined"
+    )
 
     __mapper_args__ = {"eager_defaults": True}
