@@ -14,6 +14,6 @@ class RMMasterSeverity(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseMo
 
     name = db.Column(db.String(50), nullable=True, comment="master data severity name")
 
-    risk_classifications = relationship("RMRiskClassification", back_populates="master_severity", lazy="selectIn")
+    risk_classifications = relationship("RMRiskClassification", back_populates="master_severity", lazy="selectin")
 
     __mapper_args__ = {"eager_defaults": True}

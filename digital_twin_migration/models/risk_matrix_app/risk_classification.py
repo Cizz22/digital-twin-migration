@@ -26,9 +26,15 @@ class RMRiskClassification(db.Model, BaseModel, TimestampMixin, metaclass=MetaBa
         comment="",
     )
 
-    pof_predicts = relationship("RMPofPredict", back_populates="risk_classification", lazy="selectIn")
-    
-    master_likelihood = relationship("RMMasterLikelihood", back_populates="risk_classifications", lazy="joined")
-    master_severity = relationship("RMMasterSeverity", back_populates="risk_classifications", lazy="joined")
+    pof_predicts = relationship(
+        "RMPofPredict", back_populates="risk_classification", lazy="selectin"
+    )
+
+    master_likelihood = relationship(
+        "RMMasterLikelihood", back_populates="risk_classifications", lazy="joined"
+    )
+    master_severity = relationship(
+        "RMMasterSeverity", back_populates="risk_classifications", lazy="joined"
+    )
 
     __mapper_args__ = {"eager_defaults": True}

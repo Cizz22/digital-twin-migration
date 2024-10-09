@@ -14,6 +14,8 @@ class RMMasterLikelihood(db.Model, BaseModel, TimestampMixin, metaclass=MetaBase
 
     name = db.Column(db.String(50), nullable=True, comment="master data likelihood name")
 
-    risk_classifications = relationship("RMRiskClassification", back_populates="master_likelihood", lazy="selectIn")
+    risk_classifications = relationship(
+        "RMRiskClassification", back_populates="master_likelihood", lazy="selectin"
+    )
 
     __mapper_args__ = {"eager_defaults": True}
