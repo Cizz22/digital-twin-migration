@@ -30,5 +30,6 @@ class PFIEquipment(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
 
     parent = relationship("PFIEquipment", remote_side=[id], backref="children")
     equipment_tree = relationship("PFIEquipmentTree", back_populates="equipments", lazy="joined")
+    pof_predicts = relationship("RMPofPredict", back_populates="equipment", lazy="selectIn")
 
     __mapper_args__ = {"eager_defaults": True}
