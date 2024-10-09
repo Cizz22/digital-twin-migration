@@ -20,7 +20,7 @@ class RMPofPredict(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel)
         nullable=True,
         comment="",
     )
-    class_id = db.Column(
+    risk_class_id = db.Column(
         UUID(as_uuid=True),
         db.ForeignKey("rm_risk_classification.id", ondelete="CASCADE"),
         nullable=True,
