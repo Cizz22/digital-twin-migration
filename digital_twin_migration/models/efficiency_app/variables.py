@@ -56,6 +56,10 @@ class Variable(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     
     formula = Column(String(255), nullable=True, comment="Formula name for calculation")
     
+    deviasi = Column(Float, nullable=True, default=1.0)
+    
+    persen_hr = Column(Float, nullable=True, default=1.0)
+    
     created_by = Column(UUID(as_uuid=True), nullable=False)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
 
