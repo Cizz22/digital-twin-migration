@@ -48,7 +48,8 @@ class EfficiencyTransaction(db.Model, BaseModel, TimestampMixin, metaclass=MetaB
     created_by = Column(UUID(as_uuid=True), nullable=False)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
     unique_id = Column(String(300), nullable=True, unique=True)
-    status = Column(String(300), nullable=True, default="Processing")    
+    status = Column(String(300), nullable=True, default="Processing")   
+    condensor_value = Column(Float, nullable=True)
 
     
 
