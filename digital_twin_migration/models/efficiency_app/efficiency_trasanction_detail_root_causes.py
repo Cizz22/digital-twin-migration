@@ -40,8 +40,8 @@ class EfficiencyDataDetailRootCause(db.Model, BaseModel, TimestampMixin, metacla
     # __mapper_args__ = {"eager_defaults": True}
 
     
-    efficiency_transaction_detail = relationship("EfficiencyDataDetail", back_populates="root_causes", lazy="joined")
+    efficiency_transaction_detail = relationship("EfficiencyDataDetail", back_populates="root_causes", lazy="raise")
     
-    parent_cause = relationship("VariableCause", back_populates="root_causes", lazy="joined")
-    members = relationship('EfficiencyDataDetailRootCauseMember', back_populates='root_cause', lazy='selectin')
-    actions = relationship("EfficiencyDataDetailRootCauseAction", back_populates="root_cause", lazy="selectin")
+    parent_cause = relationship("VariableCause", back_populates="root_causes", lazy="raise")
+    members = relationship('EfficiencyDataDetailRootCauseMember', back_populates='root_cause', lazy='raise')
+    actions = relationship("EfficiencyDataDetailRootCauseAction", back_populates="root_cause", lazy="raise")

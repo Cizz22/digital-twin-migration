@@ -57,7 +57,7 @@ class EfficiencyDataDetailRootCauseAction(
 
     # __mapper_args__ = {"eager_defaults": True}
 
-    action = relationship("VariableCauseAction", back_populates="root_cause_actions", lazy="joined")
+    action = relationship("VariableCauseAction", back_populates="root_cause_actions", lazy="raise")
     root_cause = relationship(
-        "EfficiencyDataDetailRootCause", back_populates="actions", lazy="joined"
+        "EfficiencyDataDetailRootCause", back_populates="actions", lazy="raise"
     )

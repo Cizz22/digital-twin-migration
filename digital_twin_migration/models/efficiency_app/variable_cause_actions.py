@@ -33,8 +33,8 @@ class VariableCauseAction(db.Model, BaseModel, TimestampMixin, metaclass=MetaBas
     created_by = Column(String(100), nullable=True)
     updated_by = Column(String(100), nullable=True)
 
-    cause = relationship("VariableCause", back_populates="actions", lazy="joined")
+    cause = relationship("VariableCause", back_populates="actions", lazy="raise")
     
-    root_cause_actions = relationship("EfficiencyDataDetailRootCauseAction", back_populates="action", lazy="selectin")
+    root_cause_actions = relationship("EfficiencyDataDetailRootCauseAction", back_populates="action", lazy="raise")
 
     __mapper_args__ = {"eager_defaults": True}
