@@ -55,7 +55,7 @@ class EfficiencyDataDetailRootCauseAction(
     created_by = Column(UUID(as_uuid=True), nullable=True)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
 
-    __mapper_args__ = {"eager_defaults": True}
+    # __mapper_args__ = {"eager_defaults": True}
 
     action = relationship("VariableCauseAction", back_populates="root_cause_actions", lazy="joined")
     root_cause = relationship(

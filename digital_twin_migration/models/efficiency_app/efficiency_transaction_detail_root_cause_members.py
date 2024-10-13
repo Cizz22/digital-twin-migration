@@ -39,7 +39,7 @@ class EfficiencyDataDetailRootCauseMember(db.Model, BaseModel, TimestampMixin, m
     created_by = Column(UUID(as_uuid=True), nullable=True)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
 
-    __mapper_args__ = {"eager_defaults": True}
+    # __mapper_args__ = {"eager_defaults": True}
 
     root_cause = relationship('EfficiencyDataDetailRootCause', back_populates='members', lazy='joined')
     variable_cause = relationship('VariableCause', back_populates='root_cause_members', lazy='joined')

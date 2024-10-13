@@ -60,7 +60,7 @@ class EfficiencyTransaction(db.Model, BaseModel, TimestampMixin, metaclass=MetaB
         "Excel", back_populates="efficiency_transactions", lazy="joined")
 
 
-    __mapper_args__ = {"eager_defaults": True}
+    # __mapper_args__ = {"eager_defaults": True}
 
     def __acl__(self):
         # basic_permissions = [CasePermission.READ]

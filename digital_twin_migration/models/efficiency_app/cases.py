@@ -42,7 +42,7 @@ class Case(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
 
     # author = relationship("User", back_populates="tasks", uselist=False, lazy="raise")
 
-    __mapper_args__ = {"eager_defaults": True}
+    # __mapper_args__ = {"eager_defaults": True}
 
     def __acl__(self):
         # basic_permissions = [CasePermission.READ]
