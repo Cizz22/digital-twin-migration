@@ -5,7 +5,7 @@ Define the Cases model
 from enum import Enum
 from uuid import uuid4
 
-from sqlalchemy import BigInteger, Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import BigInteger, Boolean, Column, Float, ForeignKey, Integer, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
@@ -33,6 +33,7 @@ class Case(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     name = Column(String(300), nullable=False, unique=True)
     kode = Column(String(300), nullable=True)
     seq = Column(Integer, nullable=True)
+    nphr_value = Column(Float, nullable=True)
     group_id = Column(String(300), nullable=True)
 
     # task_author_id = Column(

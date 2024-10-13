@@ -41,6 +41,7 @@ class EfficiencyTransaction(db.Model, BaseModel, TimestampMixin, metaclass=MetaB
     name = Column(String(300), nullable=False)
     jenis_parameter = Column(String(300), nullable=False)
     persen_threshold = Column(Integer, nullable=True, default=100)
+    cost_threshold = Column(Integer, nullable=True, default=0)
     excel_id = Column(UUID(as_uuid=True), ForeignKey(
         "hl_ms_excel.id", ondelete="CASCADE"), nullable=False)
     is_performance_test = Column(Boolean, nullable=True, default=False)
