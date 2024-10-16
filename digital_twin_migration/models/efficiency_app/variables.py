@@ -60,6 +60,8 @@ class Variable(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     
     persen_hr = Column(Float, nullable=True, default=1.0)
     
+    good_indicator = Column(String(25), comment="Plus, Minus, Equal", nullable=True)
+    
     created_by = Column(UUID(as_uuid=True), nullable=False)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
 
