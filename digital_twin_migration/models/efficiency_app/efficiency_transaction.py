@@ -53,8 +53,8 @@ class EfficiencyTransaction(db.Model, BaseModel, TimestampMixin, metaclass=MetaB
     condensor_value = Column(Float, nullable=True)
     coal_price = Column(Float, nullable=True)
     input_type = Column(String(300), nullable=True, comment="Current or Periodic")
-    periodic_start_date = periode = Column(DateTime, nullable=True)
-    periodic_end_date = periode = Column(DateTime, nullable=True)
+    periodic_start_date = Column(DateTime, nullable=True)
+    periodic_end_date = Column(DateTime, nullable=True)
 
 
     efficiency_transaction_details = relationship(
