@@ -16,6 +16,7 @@ from sqlalchemy import (
     ForeignKey,
     Integer,
     String,
+    Text
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
@@ -42,7 +43,8 @@ class EfficiencyDataDetailRootCauseAction(
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     action_id = Column(
         UUID(as_uuid=True),
-        ForeignKey("hl_ms_excel_variables_cause_actions.id", ondelete="CASCADE"),
+        ForeignKey("hl_ms_excel_variables_cause_actions.id",
+                   ondelete="CASCADE"),
         nullable=True,
     )
     root_cause_id = Column(
@@ -51,13 +53,16 @@ class EfficiencyDataDetailRootCauseAction(
         nullable=True,
     )
     is_checked = Column(Boolean, default=False)
-    biaya = Column(Float, nullable=True, comment="Besar Biaya yang dikeluarkan (input)")
+    biaya = Column(Float, nullable=True,
+                   comment="Besar Biaya yang dikeluarkan (input)")
+    notes = Column(Text, nullable=True)
     created_by = Column(UUID(as_uuid=True), nullable=True)
     updated_by = Column(UUID(as_uuid=True), nullable=True)
 
     # __mapper_args__ = {"eager_defaults": True}
 
-    action = relationship("VariableCauseAction", back_populates="root_cause_actions", lazy="raise")
+    action = relationship("VariableCauseAction",
+                          back_populates="root_cause_actions", lazy="raise")
     root_cause = relationship(
         "EfficiencyDataDetailRootCause", back_populates="actions", lazy="raise"
     )

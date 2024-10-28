@@ -33,7 +33,7 @@ class Case(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     name = Column(String(300), nullable=False, unique=True)
     kode = Column(String(300), nullable=True)
     seq = Column(Integer, nullable=True)
-    nphr_value = Column(Float, nullable=True)
+    value = Column(Float, nullable=True)
     group_id = Column(String(300), nullable=True)
 
     # task_author_id = Column(

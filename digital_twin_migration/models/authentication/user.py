@@ -30,7 +30,7 @@ class User(db.Model, BaseModel, TimestampMixin, metaclass=MetaBaseModel):
     email = Column(String(300), nullable=False, unique=True)
     username = Column(String(300), nullable=False, unique=True)
     password = Column(String(300), nullable=False)
-    position = Column(String(300), nullable=False)
+    position = Column(String(300), nullable=True)
     role_id = Column(UUID(as_uuid=True), ForeignKey(
         'auth_mr_role.id',ondelete="CASCADE"), nullable=False)
 
